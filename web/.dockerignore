@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+# Ignorar dependências
+node_modules
+.pnpm
+.pnpm-store
+
+# Ignorar arquivos de log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Ignorar variáveis de ambiente
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Ignorar arquivos de cache do editor e IDEs
+.vscode
+.idea
+.DS_Store
+
+# Ignorar arquivos de build
+dist
+build
+=======
+node_modules
+npm-debug.log
+pnpm-debug.log
+dist
+.build
+.env
+Dockerfile
+.dockerignore
+>>>>>>> 1764f77898f7d0db5362092a8013da7eaefe6e91

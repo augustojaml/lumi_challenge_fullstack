@@ -1,0 +1,148 @@
+@api=http://localhost:3333/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6IjU0ZGM2ZWUzLTFiYWEtNDUyMS04OGE5LTQzNzNlYjNjNDlmOCIsImlhdCI6MTcyOTI3NzE0MywiZXhwIjoxNzI5MjgwNzQzfQ.GYJtHeetUIUCrAOzRahDc-VOGJ4pY9xWDi2yxGcwHPs
+
+### Create client
+POST {{api}}/clients
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "full_name": "Augusto Monteiro",
+  "client_number": "9999999999",
+  "hash_password": "123456",
+  "email": "augusto@email.com",
+  "role": "ADMIN",
+  "street": "Quadra 203",
+  "number": "10",
+  "complement": "Bloco A",
+  "neighborhood": "Águas Claras",
+  "zip_code": "71909-000",
+  "city": "Águas Claras",
+  "state": "DF",
+  "tax_id": "123.456.789-00",
+  "state_registration": "1234567890",
+
+  "invoices": null
+}
+
+### Create client
+POST {{api}}/clients
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "full_name": "Jose Mesaly Fonseca de Carvalho",
+  "client_number": "7204076116",
+  "hash_password": "123456",
+  "email": "jose_mesaly@email.com",
+  "role": "USER",
+  "street": "Rua Raul Correa",
+  "number": "547",
+  "complement": " FD",
+  "neighborhood": "Montes Claros",
+  "zip_code": "39401-029",
+  "city": "Montes Claros",
+  "state": "MG",
+  "tax_id": "99.015.634/0001-85",
+  "state_registration": "2345678901",
+  "invoices": null
+}
+
+### Create client
+POST {{api}}/clients
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "full_name": "Selfway Treinamento Personalizado LTDA",
+  "client_number": "7202210726",
+  "hash_password": "123456",
+  "email": "selfway@email.com",
+  "role": "USER",
+  "street": "Avenida Bandeirantes",
+  "number": "1586",
+  "complement": "CS",
+  "neighborhood": "Belo Horizonte",
+  "zip_code": "30315-032",
+  "city": "Belo Horizonte",
+  "state": "MG",
+  "tax_id": "99.015.634/0001-85",
+  "state_registration": "2345678901",
+  "invoices": null
+}
+
+
+### Auth client
+POST {{api}}/sessions
+Content-Type: application/json
+
+{
+  "email": "augusto@email.com",
+  "hash_password": "123456"
+}
+
+### Profile me
+GET {{api}}/me
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### All Clients
+GET {{api}}/clients
+Content-Type: application/json
+
+
+### CREATE INVOICES
+POST {{api}}/invoices
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "file_name": "invoice_october_2024.pdf",
+  "reference_month": "2024-10",
+  "due_date": "2024-10-30",
+  "installation_number": "123456789",
+  "amount_due": 1500.75,
+  "billed_items": [
+    {
+      "item_name": "Electricity Usage",
+      "unit": "kWh",
+      "quantity": 250,
+      "unit_price": 0.20,
+      "amount": 50.0,
+      "unit_rate": 0.20
+    },
+    {
+      "item_name": "Service Fee",
+      "unit": "month",
+      "quantity": 1,
+      "unit_price": 20.0,
+      "amount": 20.0,
+      "unit_rate": 20.0
+    }
+  ],
+  "consumption_history": [
+    {
+      "month_year": "2024-09",
+      "consumption_kwh": 300,
+      "average_kwh_per_day": 10,
+      "days": 30
+    },
+    {
+      "month_year": "2024-08",
+      "consumption_kwh": 280,
+      "average_kwh_per_day": 9.33,
+      "days": 30
+    }
+  ]
+}
+
+
+### GET INVOICE BY ID
+GET {{api}}/invoices/75998926-ee1f-4bff-8fcf-2edbaabfc8a4
+Content-Type: application/json
+
+
+### GET ALL INVOICES
+GET {{api}}/invoices
+Content-Type: application/json

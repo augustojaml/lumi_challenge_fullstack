@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model Client {
+  id                 String    @id @default(uuid())
+  client_number      String?   @unique
+  full_name          String
+  hash_password      String
+  email              String    @unique
+  role               Role      @default(USER)
+  street             String
+  number             String
+  complement         String?
+  neighborhood       String
+  zip_code           String
+  city               String
+  state              String
+  tax_id             String
+  state_registration String?
+  invoices           Invoice[] @relation("ClientInvoices")
+
+  @@map("clients")
+}
+
+model Invoice {
+  id                  String               @id @default(uuid())
+  file_name           String
+  client_id           String
+  client              Client               @relation(fields: [client_id], references: [id], name: "ClientInvoices")
+  client_number       String
+  reference_month     String
+  due_date            DateTime
+  installation_number String
+  amount_due          Float
+  billed_items        BilledItem[]
+  consumption_history ConsumptionHistory[]
+
+  @@map("invoices")
+}
+
+model BilledItem {
+  id         String  @id @default(uuid())
+  invoice_id String
+  item_name  String
+  unit       String?
+  quantity   Float?
+  unit_price Float?
+  amount     Float
+  unit_rate  Float?
+  invoice    Invoice @relation(fields: [invoice_id], references: [id])
+
+  @@map("billed_items")
+}
+
+model ConsumptionHistory {
+  id                  String  @id @default(uuid())
+  invoice_id          String
+  month_year          String
+  consumption_kwh     Float
+  average_kwh_per_day Float
+  days                Int
+  invoice             Invoice @relation(fields: [invoice_id], references: [id])
+
+  @@map("consumption_history")
+}
