@@ -53,6 +53,13 @@ O frontend foi desenvolvido com React e utiliza as seguintes bibliotecas:
 
 3. Acesse o frontend pelo navegador em: [http://localhost:3000](http://localhost:3000)
 
+4. Usuário e senha para login:
+```bash
+user: augusto@email.com
+senha: 123456
+```
+
+
 A API estará disponível na porta `3333` e o banco de dados PostgreSQL será iniciado automaticamente como parte do ambiente Docker.
 
 ## Equipe de Desenvolvimento
