@@ -26,6 +26,10 @@ export const SignInPage = () => {
     {},
   )
 
+
+
+  console.log('env', import.meta.env.VITE_BASE_URL)
+
   const navigate = useNavigate()
 
   const { sessions: sessionsToken, signIn } = useAuthStore((store) => store)
