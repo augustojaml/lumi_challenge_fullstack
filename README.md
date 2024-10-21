@@ -1,12 +1,13 @@
 
 # Projeto Lumi Challenge Fullstack
 
-Este repositório contém a aplicação completa do desafio Lumi Challenge, composta por uma API e um frontend web. Para executar este projeto, é necessário ter **Docker** e **Docker Compose** instalados em sua máquina.
+Este repositório contém a aplicação completa do desafio Lumi Challenge, composta por uma API e um frontend web. A finalidade do projeto é permitir o upload de arquivos PDF, extrair informações destes arquivos e armazená-las para consultas futuras, além de gerar relatórios e gráficos a partir dos dados extraídos.
 
 ## Pré-requisitos
 
 - Docker
 - Docker Compose
+- PostgreSQL (instância local ou container Docker)
 
 ## Tecnologias Utilizadas
 
@@ -43,22 +44,43 @@ O frontend foi desenvolvido com React e utiliza as seguintes bibliotecas:
 1. Clone o repositório:
    ```bash
    git clone https://github.com/augustojaml/lumi_challenge_fullstack.git
-   cd lumi_challenge_fullstack
    ```
 
-2. Suba os containers com Docker Compose:
+2. Certifique-se de que tenha uma instância do PostgreSQL rodando ou instalada na máquina, ou utilize um container Docker para isso.
+
+3. Acesse a pasta `api` e crie um arquivo `.env` com as seguintes informações:
+   ```env
+   NODE_ENV=dev
+   PORT=3000
+   JWT_SECRET=mudar_123
+   DATABASE_URL=postgresql://<user>:<password>@localhost:5432/lumi_challenge_db?schema=public
+   ```
+   - Substitua `<user>` pelo seu usuário do banco de dados e `<password>` pela senha do banco de dados.
+
+4. Instale as dependências da API e execute as migrações e seeds do banco de dados:
    ```bash
-   docker-compose up -d
+   yarn install
+   yarn prisma:migrate
+   yarn prisma:seed
    ```
 
-3. Acesse o frontend pelo navegador em: [http://localhost:3000](http://localhost:3000)
+5. Acesse a pasta `web` e instale as dependências:
+   ```bash
+   yarn install
+   ```
 
-4. Usuário e senha para login:
-```bash
-user: augusto@email.com
-senha: 123456
-```
+6. Inicie o frontend:
+   ```bash
+   yarn dev
+   ```
 
+7. Acesse a aplicação no navegador em [http://localhost:3000](http://localhost:3000) e faça login com as credenciais:
+   ```
+   user: augusto@email.com
+   senha: 123456
+   ```
+
+   O projeto também pode ser acessado em [https://invoices.augustojaml.work](https://invoices.augustojaml.work). Será necessário digitar o usuário: `augusto@email.com` e senha: `123456`.
 
 A API estará disponível na porta `3333` e o banco de dados PostgreSQL será iniciado automaticamente como parte do ambiente Docker.
 
@@ -78,15 +100,6 @@ Este projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento,
 - `api/`: Contém a API desenvolvida em Node.js com Fastify.
 - `web/`: Contém a aplicação frontend desenvolvida em React.
 - `docker-compose.yml`: Arquivo de configuração do Docker Compose para orquestrar os serviços.
-
-## Contribuição
-
-Sinta-se à vontade para contribuir com este projeto. Para isso:
-1. Faça um fork do projeto.
-2. Crie uma branch com sua feature: `git checkout -b minha-feature`.
-3. Faça commit das suas alterações: `git commit -m 'Adiciona minha feature'`.
-4. Faça push para a branch: `git push origin minha-feature`.
-5. Abra um Pull Request.
 
 ## Licença
 
