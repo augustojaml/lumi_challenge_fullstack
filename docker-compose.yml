@@ -1,6 +1,7 @@
 version: "3.8"
 
 services:
+
   api:
     build:
       context: ./api
@@ -8,16 +9,18 @@ services:
     ports:
       - "3333:3333"
     environment:
-      NODE_ENV: dev
+      NODE_ENV: development
       PORT: 3333
       JWT_SECRET: mudar_123
-      DATABASE_URL: postgresql://docker:docker@lumi_challenge_db:5432/lumi_challenge_db?schema=public
+      DATABASE_URL: postgresql://docker:docker@db:5432/lumi_challenge_db?schema=public
     volumes:
-      - ./api:/usr/src/app:cached
-      - /usr/src/app/node_modules
+      - ./api:/app:cached
+      - /app/node_modules
     depends_on:
-      - lumi_challenge_db
-    command: sh -c "npx prisma migrate deploy && pnpm run seed && pnpm run dev"
+      - db
+    command: sh -c "pnpm prisma migrate deploy && pnpm run seed && pnpm run dev"
+    # Define a política de reinicialização para manter o serviço ativo
+    # restart: unless-stopped
 
   web:
     build:
@@ -29,12 +32,14 @@ services:
       VITE_API_URL: http://localhost:3333
       PORT: 3000
     volumes:
-      - ./web:/usr/src/app:cached
-      - /usr/src/app/node_modules
+      - ./web:/app:cached
+      - /app/node_modules
     depends_on:
       - api
+    # Define a política de reinicialização para manter o serviço ativo
+    # restart: unless-stopped
 
-  lumi_challenge_db:
+  db:
     image: bitnami/postgresql
     ports:
       - "5432:5432"
@@ -44,6 +49,8 @@ services:
       POSTGRES_DB: lumi_challenge_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    # Define a política de reinicialização para manter o serviço ativo
+    # restart: unless-stopped
 
 volumes:
   postgres_data:
