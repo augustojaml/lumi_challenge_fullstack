@@ -30,7 +30,7 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 # Copie o script wait-for-it.sh para o contêiner
-COPY wait-for-it.sh ./app
+COPY wait-for-it.sh ./wait-for-it.sh
 
 # Torne o script executável
 RUN chmod +x wait-for-it.sh
@@ -47,5 +47,5 @@ EXPOSE 3333
 # Defina a variável de ambiente para produção
 ENV NODE_ENV=production
 
-# Comando para rodar a aplicação
+# Comando para rodar a aplicação com o wait-for-it
 CMD ["pnpm", "start"]
