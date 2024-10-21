@@ -33,7 +33,7 @@ services:
       - /app/node_modules
     depends_on:
       - db
-    command: [pnpm prisma:deploy && pnpm prisma:seed && pnpm start"]
+    command: sh -c "pnpm prisma:deploy && pnpm prisma:seed && pnpm start"
     # Define a política de reinicialização para manter o serviço ativo
     # restart: unless-stopped
 
@@ -54,6 +54,8 @@ services:
       - api
     # Define a política de reinicialização para manter o serviço ativo
     # restart: unless-stopped
+
+
 
 volumes:
   postgres_data:
