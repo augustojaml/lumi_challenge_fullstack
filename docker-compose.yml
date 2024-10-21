@@ -33,7 +33,7 @@ services:
       - /app/node_modules
     depends_on:
       - db
-    command: ["sh", "-c", "./wait-for-it.sh db && pnpm prisma:deploy && pnpm prisma:seed && pnpm start"]
+    command: [pnpm prisma:deploy && pnpm prisma:seed && pnpm start"]
     # Define a política de reinicialização para manter o serviço ativo
     # restart: unless-stopped
 

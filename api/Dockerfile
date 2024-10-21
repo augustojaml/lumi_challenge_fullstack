@@ -48,4 +48,4 @@ EXPOSE 3333
 ENV NODE_ENV=production
 
 # Comando para rodar a aplicação com o wait-for-it
-CMD ["pnpm", "start"]
+CMD ["./wait-for-it.sh", "db:5432", "--", "pnpm", "start"]
