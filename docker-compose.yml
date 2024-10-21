@@ -3,6 +3,7 @@ version: "3.8"
 services:
 
   api:
+    container_name: api
     build:
       context: ./api
       dockerfile: Dockerfile
@@ -23,6 +24,7 @@ services:
     # restart: unless-stopped
 
   web:
+    container_name: web
     build:
       context: ./web
       dockerfile: Dockerfile
@@ -40,6 +42,7 @@ services:
     # restart: unless-stopped
 
   db:
+    container_name: db
     image: bitnami/postgresql
     ports:
       - "5432:5432"

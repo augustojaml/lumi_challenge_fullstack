@@ -1,0 +1,15 @@
+{
+  "name": "lumi_challenge_fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dcp": "docker system prune -a --volumes",
+    "dcb": "docker-compose up --build",
+    "dcu": " docker compose up -d",
+    "dcd": " docker compose down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

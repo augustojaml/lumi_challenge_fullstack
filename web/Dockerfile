@@ -4,13 +4,13 @@ FROM node:18-alpine AS build
 # Defina o diretório de trabalho
 WORKDIR /app
 
-# Copie os arquivos do package.json e do lockfile para aproveitar o cache do Docker
+# Copie apenas os arquivos necessários para instalar as dependências
 COPY package.json pnpm-lock.yaml ./
 
-# Instale as dependências do projeto
-RUN npm install -g pnpm && pnpm install
+# Instale o pnpm globalmente e as dependências do projeto
+RUN npm install -g pnpm && pnpm install --frozen-lockfile
 
-# Copie todos os arquivos do projeto
+# Copie o restante dos arquivos do projeto
 COPY . .
 
 # Execute o build da aplicação
@@ -25,7 +25,7 @@ RUN npm install -g serve
 # Defina o diretório de trabalho
 WORKDIR /app
 
-# Copie os arquivos do build da etapa anterior
+# Copie os arquivos do build da etapa anterior para a imagem de produção
 COPY --from=build /app/dist ./dist
 
 # Exponha a porta para o servidor
@@ -33,7 +33,3 @@ EXPOSE 3000
 
 # Comando para rodar a aplicação em modo de produção
 CMD ["serve", "-s", "dist"]
-
-
-# docker system prune -a --volumes
-#  docker exec -it lumi_challenge_fullstack-web-1 sh

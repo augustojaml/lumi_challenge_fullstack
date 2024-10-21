@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 
 export const SecurityRouter = ({ children }: { children: ReactNode }) => {
   const { sessions } = useAuthStore((store) => store)
+  console.log(sessions)
 
   if (!sessions) {
     return <Navigate to="/signin" />
