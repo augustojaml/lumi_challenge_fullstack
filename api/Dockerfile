@@ -30,7 +30,7 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 # Copie o script wait-for-it.sh para o contêiner
-COPY wait-for-it.sh ./
+COPY wait-for-it.sh ./app
 
 # Torne o script executável
 RUN chmod +x wait-for-it.sh
