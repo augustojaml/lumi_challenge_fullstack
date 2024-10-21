@@ -1,4 +1,5 @@
 import { useGetClients } from '@global/api/query/use-get-client'
+import { formatCurrency } from '@global/helpers/format-values'
 import { useDashboardData } from '@global/hooks/use-dashboard-data'
 import {
   ArcElement,
@@ -77,7 +78,7 @@ export const DashboardPage = () => {
                 Valor Total sem GD (R$)
               </h3>
               <p className="text-2xl font-bold text-main">
-                {totalValueWithoutGD.toFixed(2)}
+                {formatCurrency(totalValueWithoutGD)}
               </p>
             </div>
             <div className="rounded-lg bg-white p-4 shadow">
@@ -85,7 +86,7 @@ export const DashboardPage = () => {
                 Economia GD Total (R$)
               </h3>
               <p className="text-2xl font-bold text-main">
-                {totalGDSavings.toFixed(2)}
+                {formatCurrency(totalGDSavings)}
               </p>
             </div>
           </div>

@@ -82,6 +82,24 @@ O frontend foi desenvolvido com React e utiliza as seguintes bibliotecas:
 
    O projeto também pode ser acessado em [https://invoices.augustojaml.work](https://invoices.augustojaml.work). Será necessário digitar o usuário: `augusto@email.com` e senha: `123456`.
 
+## Executando o Projeto com Docker e Docker Compose
+
+Também é possível rodar o projeto utilizando Docker e Docker Compose. Para isso:
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/augustojaml/lumi_challenge_fullstack.git
+   ```
+
+2. Certifique-se de que Docker e Docker Compose estejam instalados.
+
+3. No diretório do projeto, digite:
+   ```bash
+   docker-compose up -d
+   ```
+
+4. Acesse o projeto em [http://localhost:3000](http://localhost:3000).
+
 A API estará disponível na porta `3333` e o banco de dados PostgreSQL será iniciado automaticamente como parte do ambiente Docker.
 
 ## Equipe de Desenvolvimento
@@ -100,6 +118,15 @@ Este projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento,
 - `api/`: Contém a API desenvolvida em Node.js com Fastify.
 - `web/`: Contém a aplicação frontend desenvolvida em React.
 - `docker-compose.yml`: Arquivo de configuração do Docker Compose para orquestrar os serviços.
+
+## Contribuição
+
+Sinta-se à vontade para contribuir com este projeto. Para isso:
+1. Faça um fork do projeto.
+2. Crie uma branch com sua feature: `git checkout -b minha-feature`.
+3. Faça commit das suas alterações: `git commit -m 'Adiciona minha feature'`.
+4. Faça push para a branch: `git push origin minha-feature`.
+5. Abra um Pull Request.
 
 ## Licença
 
