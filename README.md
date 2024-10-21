@@ -42,7 +42,7 @@ O frontend foi desenvolvido com React e utiliza as seguintes bibliotecas:
 
 1. Clone o repositório:
    ```bash
-   git clone [<url-do-repositorio>](https://github.com/augustojaml/lumi_challenge_fullstack.git)
+   git clone [https://github.com/augustojaml/lumi_challenge_fullstack.git](https://github.com/augustojaml/lumi_challenge_fullstack.git)
    cd lumi_challenge_fullstack
    ```
 
