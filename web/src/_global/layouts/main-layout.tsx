@@ -17,7 +17,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       {/* Sidebar */}
       <aside className="hidden w-64 flex-col bg-sidebar text-white md:flex">
         <div className="flex items-center p-4 font-semibold">
-          <img src="public/assets/logo.png" alt="Logo" className="h-10 w-10" />
+          <img src="assets/logo.png" alt="Logo" className="h-10 w-10" />
           <span className="ml-2 text-2xl">
             <strong className="text-main">I</strong>Managers
           </span>

@@ -9,7 +9,7 @@ services:
     ports:
       - "3333:3333"
     environment:
-      NODE_ENV: development
+      NODE_ENV: production
       PORT: 3333
       JWT_SECRET: mudar_123
       DATABASE_URL: postgresql://docker:docker@db:5432/lumi_challenge_db?schema=public
@@ -18,7 +18,7 @@ services:
       - /app/node_modules
     depends_on:
       - db
-    command: sh -c "pnpm prisma migrate deploy && pnpm run seed && pnpm run dev"
+    command: sh -c "pnpm prisma:deploy && pnpm prisma:seed && pnpm start"
     # Define a política de reinicialização para manter o serviço ativo
     # restart: unless-stopped
 

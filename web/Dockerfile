@@ -33,3 +33,7 @@ EXPOSE 3000
 
 # Comando para rodar a aplicação em modo de produção
 CMD ["serve", "-s", "dist"]
+
+
+# docker system prune -a --volumes
+#  docker exec -it lumi_challenge_fullstack-web-1 sh

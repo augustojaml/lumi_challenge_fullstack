@@ -9,7 +9,6 @@
     "lint": "eslint src --ext .ts --fix",
     "build": "tsup src --out-dir build",
     "start": "node build/shared/http/server.cjs",
-    "seed": "tsx prisma/seed/user-seed.ts",
     "test": "vitest run --dir src/app",
     "test:all": "vitest run",
     "test:watch": "vitest src/modules",
@@ -18,7 +17,9 @@
     "test:e2e:watch": "vitest --dir src/shared/http/controllers",
     "prisma:generate": "pnpm exec prisma generate",
     "prisma:migrate": "pnpm exec prisma migrate dev",
-    "prisma:studio": "pnpm exec prisma studio"
+    "prisma:seed": "tsx prisma/seed/user-seed.ts",
+    "prisma:studio": "pnpm exec prisma studio",
+    "prisma:deploy": "pnpm exec prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
