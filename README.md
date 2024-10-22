@@ -81,6 +81,7 @@ O frontend foi desenvolvido com React e utiliza as seguintes bibliotecas:
    yarn install
    yarn prisma:migrate
    yarn prisma:seed
+   yarn dev
    ```
 
 5. Acesse a pasta `web` e instale as dependências:
