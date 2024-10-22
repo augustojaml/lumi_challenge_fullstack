@@ -139,14 +139,13 @@ Este projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento,
 - `web/`: Contém a aplicação frontend desenvolvida em React.
 - `docker-compose.yml`: Arquivo de configuração do Docker Compose para orquestrar os serviços.
 
-## Contribuição
+## Autor
 
-Sinta-se à vontade para contribuir com este projeto. Para isso:
-1. Faça um fork do projeto.
-2. Crie uma branch com sua feature: `git checkout -b minha-feature`.
-3. Faça commit das suas alterações: `git commit -m 'Adiciona minha feature'`.
-4. Faça push para a branch: `git push origin minha-feature`.
-5. Abra um Pull Request.
+Feito com :purple_heart: by [Augusto Monteiro](https://github.com/augustojaml)
+
+[![Linkedin Badge](https://img.shields.io/badge/-Augusto%20Monteiro-6E40C9?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/augustojaml)](https://www.linkedin.com/in/augustojaml)
+[![Gmail Badge](https://img.shields.io/badge/-jamonteirolima@gmail.com-6E40C9?style=flat-square&logo=Gmail&logoColor=white&link=mailto:jamonteirolima@gmail.com)](mailto:jamonteirolima@gmail.com)
+
 
 ## Licença
 
