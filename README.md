@@ -3,6 +3,25 @@
 
 Este repositório contém a aplicação completa do desafio Lumi Challenge, composta por uma API e um frontend web. A finalidade do projeto é permitir o upload de arquivos PDF, extrair informações destes arquivos e armazená-las para consultas futuras, além de gerar relatórios e gráficos a partir dos dados extraídos.
 
+## Meu Projeto
+
+Este projeto inclui funcionalidades de login, dashboard, gerenciamento de clientes e uploads. Abaixo estão algumas capturas de tela das principais funcionalidades:
+
+### Login
+![Descrição da imagem](/img-login.PNG)
+
+### Dashboard
+![Descrição da imagem](/img-dash.PNG)
+
+### Uploads
+![Descrição da imagem](/img-up1.PNG)
+![Descrição da imagem](/img-up2.PNG)
+![Descrição da imagem](/img-up3.PNG)
+
+### Clientes
+![Descrição da imagem](/img-cli1.PNG)
+![Descrição da imagem](/img-cli2.PNG)
+
 ## Pré-requisitos
 
 - Docker
