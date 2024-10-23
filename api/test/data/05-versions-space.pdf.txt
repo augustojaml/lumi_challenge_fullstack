@@ -1,112 +1,72 @@
 
 
-TESTEDEPRÁTICOLUMI–DESENVOLVEDOR(A)FULLSTACKPLENO(A)
-Olá,candidato(a)aDesenvolvedorFullStackPleno,estamosempolgadosemtervocênoprocesso
-deseleçãodaLumi.Comopartecrucialdesteprocesso,apresentamosumdesafiotécnicoquenos
-permitiráavaliarsuashabilidadesecompetênciaemdesenvolvimentoFullStack.
-NotaImportante:Otrabalhosubmetidoparaestetestenãoseráutilizadoparafinscomerciaisou
-integradoemnossosprodutos.Oobjetivoépuramenteavaliativo.
-DESCRIÇÃODODESAFIO
-Nósiremosforneceralgumasfaturasdeenergiaelétrica.Seuobjetivoserádesenvolverumcódigo
-quesejacapazde:
-●
-Extrairosdadosrelevantesdessasfaturas.
-●
-OrganizaressesdadosdemaneiraestruturadaemumbancodedadosPostgreSQL.
-●
-Apresentaressesdadosemumaaplicaçãoweb,pormeiodeumaAPI.
-Tecnologiasaseremutilizadas:Typescript/JavaScript,Node.js(Fastify/Express)eReact.
-DETALHAMENTODODESAFIO
-1.ExtraçãodeDados:Vocêdevedesenvolverumextratordedadosparacapturarosdadosdas
-faturasdeenergiaelétricafornecidas(anexoFATURAS)eextrairasinformaçõesrelevantes.Estas
-incluem,masnãoestãolimitadasa:
-●
-“NºDOCLIENTE”,porexemplo:
-●
-“Mêsdereferência”,porexemplo:
-●
-‘EnergiaElétrica’–Quantidade(kWh)eValor(R$),
-●
-‘EnergiaSCEEEs/ICMS’–Quantidade(kWh)eValor(R$),
-●
-‘EnergiaCompensadaGDI’–Quantidade(kWh)eValor(R$),porexemplo:
-●
-‘ContribIlumPublicaMunicipal’–Valor(R$),porexemplo:
-Observação:Podeserútilutilizarumabibliotecacomo
-pdf-lib
-ou
-pdf-parse
-noNode.jsparaa
-extraçãoeficientedosdadosdosPDFsfornecidos.
-2.BancodeDados:OBancodedadosdeveestaremPostgreSQL.OusodeORMs
-
-(Sequelize/Prisma/Knex)seráumdiferencial.
-3.Aplicação:Osdadosarmazenadosnobancodedadosdevemseracessíveisevisualizáveispor
-meiodeumaaplicaçãoweb,utilizandoReactparaoFront-endeNode.jsparaoback-end.Oback-end
-podeserelaboradoutilizandoosframeworksFastifyouExpress.
-3.1.VariáveisdeInteresse:abaixoestãoelencadasasvariáveisdeinteresse,algumasdelas
-calculadas:
-●
-ConsumodeEnergiaElétrica(KWh):correspondeaosomatóriodasvariáveis‘Energia
-ElétricakWh’+‘EnergiaSCEEEs/ICMSkWh’,porexemplo:
-Exemplo(Abril/24):ConsumodeEnergiaElétrica=50kWh+476kWh=526kWh;
-●
-EnergiaCompensada(kWh):correspondeàvariável‘EnergiaCompensadaGDI(kWh)’;
-●
-ValorTotalsemGD(R$):somatóriodosvaloresfaturadosde‘EnergiaElétrica(R$)’+‘Energia
-SCEEs/ICMS(R$)’+‘ContribIlumPublicaMunicipal(R$)’;
-●
-EconomiaGD(R$):correspondeà‘EnergiacompensadaGDI(R$)’.
-3.2.PáginasdaAplicação:aaplicaçãoserácompostaporduaspáginas,sendoelas:
-3.2.1.Dashboard:estapáginatratágráficosecardsrepresentandoostotaisdasvariáveis,osgráficos
-deinteressesão:
-●
-ResultadosdeEnergia(kWh)=ConsumodeEnergiaElétricaKWhvsEnergíaCompensada
-kWh;
-●
-ResultadosFinanceiros(R$)=ValorTotalsemGDR$vsEconomiaGDR$.
-3.2.2.BibliotecadeFaturas:Páginadedicadaàdisponibilizaçãodasfaturasaousuáriofinal,
-permitindoqueousuárioselecioneumdeterminadoNºDOCLIENTEerealizeodownloaddesua
-faturadeenergiaelétricaemummêsespecífico.Ex:
-3.3.Detalhesadicionaisdaaplicação:
-3.3.1.FiltroseVisualização:Aespecificaçãoexigefiltrospornúmerodoclienteeperíododeanálise.
-Garantaqueofront-endcomReacttenhaumainterfaceintuitivaparaessanavegação.
-3.3.2.Gráficos:Usebibliotecascomo
-Chart.js
-ou
-Recharts
-paraplotargráficosclarose
-personalizáveis.
-3.3.3.CardsResumo:Criecardsnodashboardparaexibirostotaisacumuladosporvariável(Ex:total
-deenergiaconsumida,valorcompensado,etc.).
-4.TestesAutomatizados
-4.1.Testesunitáriospodemincluirvalidaçãode:
-●
-ParsingcorretodosPDFs.
-●
-InserçãonobancoeretornopelaAPI.
-●
-Cálculocorretodosvaloresagregados.
-
-5.EnvioeHospedagem:Ahospedagemdaaplicaçãoéopcional,maspodeserumdiferencialpositivo.Você
-podeusarplataformasgratuitascomoVerceleRenderparaessafinalidade.
-ENTREGA
-●
-Código:DisponibilizarocódigoemumrepositóriopúbliconoGitHub.
-●
-Documentação:FornecerumREADMEdetalhadocominstruçõesdeconfiguração,instalação,
-execuçãoeusodaaplicação.
-●
-Demonstração:Opcionalmente,hóspedeaaplicaçãoemumservidordesuaescolhaenos
-envieolinkparavisualizarmosaaplicaçãoweb.
-Envieotesteparaosemails:gabriel@labs-lumi.com.br,victor@labs-lumi.com.br,
-marcelo@labs-lumi.com.br,nicolas@labs-lumi.com.br,contendoocódigofonteemrepositórioGit
-(compartilharoacessocomestesmesmose-mails),juntamentecominstruçõesnoREADMEdo
-projetosobrecomoconfigurareexecutaraaplicação.Sepossível,hospedeaaplicaçãoemum
-servidordesuaescolhaenosenvieolinkparavisualizarmosaaplicaçãoweb,conformeexplicitado
-noitem5.EnvioeHospedagem.
-Estedesafioéprojetadoexclusivamenteparaavaliarsuaexperiênciaecompetênciacomas
-tecnologiaslistadas,bemcomosuashabilidadesderesoluçãodeproblemas,organizaçãoeatenção
-aosdetalhes.
-Datalimiteparaenviodotesteprático:20/10/2024
-Boasorte!Estamosansiososparaveroquevocêirácriar!
+Valores Faturados
+Itens da FaturaUnid.Quant.Preço UnitValor (R$) PIS/COFINSBase Calc.Aliq.ICMSTarifa Unit.
+ICMSICMS
+Energia ElétricakWh      50  0,95543124        47,75 0,74906000 
+Energia SCEE s/ ICMSkWh     456  0,50970610       232,42 0,48733000 
+Energia compensada GD IkWh     456  0,48733000      -222,22 0,48733000 
+Contrib Ilum Publica Municipal         49,43
+TOTAL        107,38
+Histórico de Consumo
+MÊS/ANOCons. kWhMédia kWh/DiaDias
+JAN/24     506     16,86   30
+DEZ/23     606     18,93   32
+NOV/23     481     16,03   30
+OUT/23     517     17,23   30
+SET/23     493     15,40   32
+AGO/23     455     15,16   30
+JUL/23     419     13,09   32
+JUN/23     509     16,96   30
+MAI/23     522     17,40   30
+ABR/23     274      8,56   32
+MAR/23     571     18,41   31
+FEV/23     472     16,85   28
+JAN/23     509     16,41   31
+Reservado ao Fisco
+SEM VALOR FISCAL
+Base de cálculo (R$)Alíquota (%)Valor (R$)
+Fale com CEMIG: 116 - CEMIG Torpedo 29810 - Ouvidoria CEMIG: 0800 728 3838 - Agência Nacional de Energia Elétrica - ANEEL - Telefone: 167 - Ligação gratuita de telefones fixos e móveis.
+Código de Débito AutomáticoInstalaçãoVencimentoTotal a pagar
+008110755504300111673512/02/2024R$107,38
+Janeiro/202483650000001-0 07380138005-3 00994756733-6 08110755504-7
+JOSE MESALY FONSECA DE CARVALHO 52024156
+RUA RAUL CORREA 347 FD
+FUNCIONARIOS
+39401-029 MONTES CLAROS, MG
+CNPJ 36.611.9**/****-**
+INSCRIÇÃO ESTADUAL 00368********
+        Nº DO CLIENTE                      Nº DA INSTALAÇÃO
+  7204076116        3001116735
+         Referente a                                Vencimento                       Valor a pagar (R$)
+    JAN/2024               12/02/2024               107,38 
+NOTA FISCAL Nº 115591996 - SÉRIE 000
+Data de emissão: 30/01/2024
+Consulte pela chave de acesso em:
+http://www.sped.fazenda.mg.gov.br/spedmg/nf3e
+chave de acesso:
+31240106981180000116660001155919961044595613
+Protocolo de autorização: 1312400126805981
+31.01.2024 às 00:08:06
+ClasseSubclasseModalidade TarifáriaDatas de Leitura
+ComercialComercial Convencional B3AnteriorAtualNº de diasPróxima
+Bifásico12/1211/01 3008/02
+Informações Técnicas
+Tipo de MediçãoMediçãoLeituraLeituraConstanteConsumo kWh
+AnteriorAtualde Multiplicação
+Energia kWhAPD12603617195.81396.3191506      
+ 
+DOCUMENTO AUXILIAR DA NOTA FISCAL DE ENERGIA ELÉTRICA ELETRÔNICASEGUNDA VIA
+CEMIG DISTRIBUIÇÃO S.A. CNPJ 06.981.180/0001-16 / INSC. ESTADUAL 062.322136.0087.
+AV. BARBACENA, 1200 - 17° ANDAR - ALA 1 - BAIRRO SANTO AGOSTINHO
+CEP: 30190-131 - BELO HORIZONTE - MG.TARIFA SOCIAL DE ENERGIA ELÉTRICA - TSEE FOI CRIADA PELA LEI Nº 10.438, DE 26 DE ABRIL DE 2002
+Informações Gerais
+RECIBO DE QUITAÇÃO DE DÉBITOS Nº 01/2024 A Cemig, em atendimento à Lei nº 12.007, de 29/07/09,
+declara quitados os débitos do cliente em referência (contrato 5020042974), relativos ao fornecimento de
+energia elétrica a esta unidade consumidora, referente aos vencimentos de 01/01/2022 a 31/12/2023,
+excetuando eventuais débitos que sejam posteriormente apurados diante de possível verificação de
+irregularidades ou de revisão de faturamento, que abranjam o período em questão. SALDO ATUAL DE
+GERAÇÃO: 1.327,20 kWh. Tarifa vigente conforme Res Aneel nº 3.202, de 23/05/2023. Redução aliquota
+ICMS conforme Lei Complementar 194/22. Unidade faz parte de sistema de compensação de energia. Leitura
+realizada conforme calendário de faturamento. DEZ/23 Band. Verde - JAN/24 Band. Verde.
+  

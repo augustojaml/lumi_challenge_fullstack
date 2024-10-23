@@ -47,7 +47,7 @@ export class CreateInvoicesUseCase {
     const createdInvoice = {
       ...data.invoice,
       client_id: data.client_id,
-      client_number: client.client_number ?? 0,
+      client_number: client.client_number!,
     }
 
     const invoice = await this.invoicesRepository.create(createdInvoice)

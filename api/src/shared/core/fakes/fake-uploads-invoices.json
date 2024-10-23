@@ -1,0 +1,242 @@
+[
+  {
+    "file_name": "invoice_001.pdf",
+    "client_number": "10011001",
+    "reference_month": "2024-09",
+    "due_date": "2024-10-15",
+    "installation_number": "INST-1001",
+    "amount_due": 350.75,
+    "billed_items": [
+      {
+        "item_name": "Electricity Usage",
+        "unit": "kWh",
+        "quantity": 500,
+        "unit_price": 0.20,
+        "amount": 100,
+        "unit_rate": 0.20
+      },
+      {
+        "item_name": "Service Fee",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 50,
+        "amount": 50,
+        "unit_rate": 50
+      },
+      {
+        "item_name": "Meter Rental",
+        "unit": "month",
+        "quantity": 1,
+        "unit_price": 15,
+        "amount": 15,
+        "unit_rate": 15
+      }
+    ],
+    "consumption_history": [
+      {
+        "month_year": "2024-08",
+        "consumption_kwh": 480,
+        "average_kwh_per_day": 16,
+        "days": 30
+      },
+      {
+        "month_year": "2024-07",
+        "consumption_kwh": 450,
+        "average_kwh_per_day": 15,
+        "days": 30
+      }
+    ]
+  },
+  {
+    "file_name": "invoice_002.pdf",
+    "client_number": "CL789012",
+    "reference_month": "2024-09",
+    "due_date": "2024-10-18",
+    "installation_number": "INST-2002",
+    "amount_due": 420.90,
+    "billed_items": [
+      {
+        "item_name": "Electricity Usage",
+        "unit": "kWh",
+        "quantity": 600,
+        "unit_price": 0.18,
+        "amount": 108,
+        "unit_rate": 0.18
+      },
+      {
+        "item_name": "Service Fee",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 50,
+        "amount": 50,
+        "unit_rate": 50
+      },
+      {
+        "item_name": "Energy Tax",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 20,
+        "amount": 20,
+        "unit_rate": 20
+      }
+    ],
+    "consumption_history": [
+      {
+        "month_year": "2024-08",
+        "consumption_kwh": 550,
+        "average_kwh_per_day": 18.33,
+        "days": 30
+      },
+      {
+        "month_year": "2024-07",
+        "consumption_kwh": 520,
+        "average_kwh_per_day": 17.33,
+        "days": 30
+      }
+    ]
+  },
+  {
+    "file_name": "invoice_003.pdf",
+    "client_number": "CL345678",
+    "reference_month": "2024-09",
+    "due_date": "2024-10-12",
+    "installation_number": "INST-3003",
+    "amount_due": 295.60,
+    "billed_items": [
+      {
+        "item_name": "Electricity Usage",
+        "unit": "kWh",
+        "quantity": 450,
+        "unit_price": 0.19,
+        "amount": 85.5,
+        "unit_rate": 0.19
+      },
+      {
+        "item_name": "Service Fee",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 50,
+        "amount": 50,
+        "unit_rate": 50
+      },
+      {
+        "item_name": "Late Payment Charge",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 10,
+        "amount": 10,
+        "unit_rate": 10
+      }
+    ],
+    "consumption_history": [
+      {
+        "month_year": "2024-08",
+        "consumption_kwh": 430,
+        "average_kwh_per_day": 14.33,
+        "days": 30
+      },
+      {
+        "month_year": "2024-07",
+        "consumption_kwh": 410,
+        "average_kwh_per_day": 13.67,
+        "days": 30
+      }
+    ]
+  },
+  {
+    "file_name": "invoice_004.pdf",
+    "client_number": "CL901234",
+    "reference_month": "2024-09",
+    "due_date": "2024-10-20",
+    "installation_number": "INST-4004",
+    "amount_due": 365.30,
+    "billed_items": [
+      {
+        "item_name": "Electricity Usage",
+        "unit": "kWh",
+        "quantity": 550,
+        "unit_price": 0.18,
+        "amount": 99,
+        "unit_rate": 0.18
+      },
+      {
+        "item_name": "Meter Maintenance",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 20,
+        "amount": 20,
+        "unit_rate": 20
+      },
+      {
+        "item_name": "Environmental Fee",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 10,
+        "amount": 10,
+        "unit_rate": 10
+      }
+    ],
+    "consumption_history": [
+      {
+        "month_year": "2024-08",
+        "consumption_kwh": 530,
+        "average_kwh_per_day": 17.67,
+        "days": 30
+      },
+      {
+        "month_year": "2024-07",
+        "consumption_kwh": 500,
+        "average_kwh_per_day": 16.67,
+        "days": 30
+      }
+    ]
+  },
+  {
+    "file_name": "invoice_005.pdf",
+    "client_number": "CL567890",
+    "reference_month": "2024-09",
+    "due_date": "2024-10-25",
+    "installation_number": "INST-5005",
+    "amount_due": 330.00,
+    "billed_items": [
+      {
+        "item_name": "Electricity Usage",
+        "unit": "kWh",
+        "quantity": 480,
+        "unit_price": 0.18,
+        "amount": 86.4,
+        "unit_rate": 0.18
+      },
+      {
+        "item_name": "Service Fee",
+        "unit": "unit",
+        "quantity": 1,
+        "unit_price": 50,
+        "amount": 50,
+        "unit_rate": 50
+      },
+      {
+        "item_name": "Meter Rental",
+        "unit": "month",
+        "quantity": 1,
+        "unit_price": 15,
+        "amount": 15,
+        "unit_rate": 15
+      }
+    ],
+    "consumption_history": [
+      {
+        "month_year": "2024-08",
+        "consumption_kwh": 460,
+        "average_kwh_per_day": 15.33,
+        "days": 30
+      },
+      {
+        "month_year": "2024-07",
+        "consumption_kwh": 440,
+        "average_kwh_per_day": 14.67,
+        "days": 30
+      }
+    ]
+  }
+]
