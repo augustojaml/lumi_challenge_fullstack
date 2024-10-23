@@ -14,11 +14,9 @@ export const uploadPdfInvoicesController = async (
 
   const invoiceParts = uploadFileSchema.parse(filesParts)
 
-  const { createdInvoices, invoicesWithoutClient } = await uploadFile.execute({
+  const { managerInvoices } = await uploadFile.execute({
     invoices: invoiceParts,
   })
 
-  return reply
-    .status(201)
-    .send({ invoices: createdInvoices, invoicesWithoutClient })
+  return reply.status(201).send({ invoices: managerInvoices })
 }

@@ -8,6 +8,7 @@ export interface IUploadPdfInvoiceRequest {
   due_date: Date
   installation_number: string
   amount_due: number
+  upload_reject?: 'CLIENT_NOT_FOUND' | 'INVOICE_ALREADY_EXISTS' | null
   billed_items: {
     item_name: string
     unit: string
@@ -38,8 +39,7 @@ export class UploadPdfInvoicesUseCase {
 
   async execute({ invoices }: UploadPdfInvoiceRequest) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const createdInvoices: any[] = []
-    const invoicesWithoutClient: IUploadPdfInvoiceRequest[] = []
+    const managerInvoices: any[] = []
 
     for (const invoice of invoices) {
       const client = await this.clientsRepository.findByClient(
@@ -47,19 +47,33 @@ export class UploadPdfInvoicesUseCase {
       )
 
       if (client) {
-        const createdInvoice = await this.invoicesRepository.create({
-          ...invoice,
-          client_number: client.client_number ?? '',
-          client_id: client.id,
-        })
+        const findInvoiceByReferenceMonth =
+          await this.invoicesRepository.findInvoiceByReferenceMonth(
+            invoice.reference_month,
+          )
 
-        createdInvoices.push(createdInvoice)
+        if (findInvoiceByReferenceMonth) {
+          managerInvoices.push({
+            ...invoice,
+            upload_reject: 'INVOICE_ALREADY_EXISTS',
+          })
+        } else {
+          const createdInvoice = await this.invoicesRepository.create({
+            ...invoice,
+            client_number: client.client_number ?? '',
+            client_id: client.id,
+          })
+          managerInvoices.push({ ...createdInvoice, upload_reject: null })
+        }
       } else {
-        invoicesWithoutClient.push(invoice)
+        managerInvoices.push({
+          ...invoice,
+          upload_reject: 'CLIENT_NOT_FOUND',
+        })
       }
     }
 
     // Retorna os arrays preenchidos
-    return { createdInvoices, invoicesWithoutClient }
+    return { managerInvoices }
   }
 }

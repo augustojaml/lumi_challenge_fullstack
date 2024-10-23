@@ -32,4 +32,5 @@ export interface IInvoiceRepository {
   create(data: ICreateInvoiceData): Promise<Invoice>
   findById(id: string): Promise<Invoice | null>
   findAll(): Promise<Invoice[]>
+  findInvoiceByReferenceMonth(reference_month: string): Promise<Invoice | null>
 }

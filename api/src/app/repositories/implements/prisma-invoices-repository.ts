@@ -52,4 +52,21 @@ export class PrismaInvoicesRepository implements IInvoiceRepository {
     })
     return invoices
   }
+
+  async findInvoiceByReferenceMonth(
+    reference_month: string,
+  ): Promise<Invoice | null> {
+    if (!reference_month) {
+      return null
+    }
+
+    const invoice = await prisma.invoice.findFirst({
+      where: { reference_month },
+      include: {
+        billed_items: true,
+        consumption_history: true,
+      },
+    })
+    return invoice || null
+  }
 }

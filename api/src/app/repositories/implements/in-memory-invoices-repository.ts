@@ -35,4 +35,13 @@ export class InMemoryInvoicesRepository implements IInvoiceRepository {
   async findAll(): Promise<Invoice[]> {
     return this.invoices
   }
+
+  async findInvoiceByReferenceMonth(
+    reference_month: string,
+  ): Promise<Invoice | null> {
+    const invoice = this.invoices.find(
+      (invoice) => invoice.reference_month === reference_month,
+    )
+    throw invoice || null
+  }
 }
