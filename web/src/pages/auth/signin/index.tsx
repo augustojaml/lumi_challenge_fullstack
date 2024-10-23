@@ -28,7 +28,6 @@ export const SignInPage = () => {
 
 
 
-  console.log('env', import.meta.env.VITE_BASE_URL)
 
   const navigate = useNavigate()
 

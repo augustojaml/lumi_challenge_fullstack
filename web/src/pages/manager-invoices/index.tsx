@@ -19,6 +19,7 @@ export const ManageInvoicesPage = () => {
   const handleUploadFiles = async () => {
     try {
       const response = await mutateAsync({ files })
+      console.log('response', response)
       setUploadedFiles(response.invoices)
     } catch (error) {
       console.log('error', error)
@@ -34,11 +35,21 @@ export const ManageInvoicesPage = () => {
     [uploadedFiles.length],
   )
 
+  const downloadedInvoices = useMemo(
+    () => uploadedFiles.filter((invoice) => !invoice.upload_reject),
+    [uploadedFiles]
+  )
+
+  const rejectedInvoices = useMemo(
+    () => uploadedFiles.filter((invoice) => invoice.upload_reject),
+    [uploadedFiles]
+  )
+
   return (
     <div>
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xl font-semibold text-textPrimary">
-          {hasUploadedFiles ? 'Fatura baixadas' : 'Gerenciar PDFs'}
+          {hasUploadedFiles ? 'Faturas Baixadas' : 'Gerenciar PDFs'}
         </h2>
 
         <Button
@@ -58,8 +69,32 @@ export const ManageInvoicesPage = () => {
         <Loading />
       ) : (
         <>
-          {uploadedFiles.length ? (
-            <UploadedInvoices invoices={uploadedFiles} />
+          {hasUploadedFiles ? (
+            <>
+              {downloadedInvoices.length > 0 && (
+                <>
+                  <h3 className="text-lg font-semibold text-successPrimary mb-4">
+                    Faturas Baixadas
+                  </h3>
+                  <UploadedInvoices invoices={downloadedInvoices} />
+                </>
+              )}
+              <hr className="my-4 mt-8" />
+              {rejectedInvoices.length > 0 && (
+                <>
+                  <h3 className="mt-6 text-lg font-semibold text-errorPrimary mb-4">
+                    Faturas Rejeitadas
+                  </h3>
+                  <UploadedInvoices invoices={rejectedInvoices} />
+                </>
+              )}
+              {downloadedInvoices.length === 0 &&
+                rejectedInvoices.length === 0 && (
+                  <p className="text-center text-gray-500">
+                    Nenhuma fatura encontrada.
+                  </p>
+                )}
+            </>
           ) : (
             <UploadFiles onChangeFiles={handleChangeFiles} />
           )}
