@@ -38,10 +38,10 @@ describe('Upload invoices Use Case Unit', () => {
       },
     ]
 
-    const { createdInvoices, invoicesWithoutClient } = await sut.execute({
+    const { managerInvoices } = await sut.execute({
       invoices: uploadedInvoices,
     })
-    expect(createdInvoices).toEqual(
+    expect(managerInvoices).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           file_name: 'invoice_001.pdf',
@@ -49,17 +49,6 @@ describe('Upload invoices Use Case Unit', () => {
           reference_month: '2024-09',
           installation_number: 'INST-1001',
           amount_due: 350.75,
-        }),
-      ]),
-    )
-
-    expect(invoicesWithoutClient).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          file_name: 'invoice_002.pdf',
-          client_number: 'CL789012',
-          reference_month: '2024-09',
-          amount_due: 420.9,
         }),
       ]),
     )
@@ -77,11 +66,11 @@ describe('Upload invoices Use Case Unit', () => {
       },
     ]
 
-    const { invoicesWithoutClient } = await sut.execute({
+    const { managerInvoices } = await sut.execute({
       invoices: uploadedInvoices,
     })
 
-    expect(invoicesWithoutClient).toEqual(
+    expect(managerInvoices).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           file_name: 'invoice_001.pdf',
@@ -89,12 +78,6 @@ describe('Upload invoices Use Case Unit', () => {
           reference_month: '2024-09',
           installation_number: 'INST-1001',
           amount_due: 350.75,
-        }),
-        expect.objectContaining({
-          file_name: 'invoice_002.pdf',
-          client_number: 'CL789012',
-          reference_month: '2024-09',
-          amount_due: 420.9,
         }),
       ]),
     )

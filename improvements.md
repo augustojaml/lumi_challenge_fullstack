@@ -1,0 +1,9 @@
+- [x] - Rejeitar faturas duplicadas
+- [x] - Redirect Unauthorized
+- [ ] - Ajustar testes
+- [ ] - Cadastro de clientes
+- [ ] - Details fatura
+- [ ] - Download PDF Faturas
+- [ ] - Validar Token Rotas
+- [ ] - Validar Admin => dashboard, arquivos, clientes
+- [ ] - Dashboard
