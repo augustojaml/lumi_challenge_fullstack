@@ -20,6 +20,10 @@ interface MainLayoutProps {
 export const MainLayout = ({ children }: MainLayoutProps) => {
   const { signOut } = useAuthStore((store) => store);
 
+
+
+
+
   const { data } = useGetMe();
 
   return (

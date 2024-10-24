@@ -1,15 +1,17 @@
 import { Loading } from '@components/loading'
 import { useGetClients } from '@global/api/query/use-get-client'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import { MoreVertical } from 'lucide-react'
+import { MoreVertical, Plus } from 'lucide-react'
 import { useState } from 'react'
 
+import { AddClientModal } from './add-client-modal'
 import { ModalClientDetalhe } from './modal-client-detail'
 import { IClient } from './props'
 
 export const ClientsPage = () => {
   const { data: clients, isLoading, isError, error } = useGetClients()
   const [selectedClient, setSelectedClient] = useState<IClient | null>(null)
+  const [isAddClientModalOpen, setIsAddClientModalOpen] = useState(false);
 
   const handleOpenInvoiceDetails = (client: IClient) => {
     setSelectedClient(client)
@@ -18,6 +20,11 @@ export const ClientsPage = () => {
   const getRandomNumber = (): number => {
     return Math.floor(Math.random() * 100) + 1
   }
+
+  const handleAddClient = (newClientData: IClient) => {
+    // Aqui você pode adicionar a lógica para enviar os dados do cliente à API
+    console.log('Novo cliente adicionado:', newClientData);
+  };
 
   return (
     <>
@@ -32,13 +39,16 @@ export const ClientsPage = () => {
         <div>
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h2 className="text-xl font-semibold text-textPrimary">
-                Histórico de Pagamentos
-              </h2>
-              <p className="text-gray-500">
-                Veja os detalhes das faturas dos clientes abaixo.
-              </p>
+              <h2 className="text-xl font-semibold text-textPrimary">Histórico de Pagamentos</h2>
+              <p className="text-gray-500">Veja os detalhes das faturas dos clientes abaixo.</p>
             </div>
+            <button
+              className="flex items-center space-x-2 rounded bg-main px-4 py-2 text-white hover:bg-mainDark"
+              onClick={() => setIsAddClientModalOpen(true)}
+            >
+              <Plus className="h-5 w-5" />
+              <span>Novo Cliente</span>
+            </button>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full rounded-lg bg-white shadow">
@@ -125,6 +135,11 @@ export const ClientsPage = () => {
       <ModalClientDetalhe
         selectedClient={selectedClient}
         setSelectedClient={setSelectedClient}
+      />
+      <AddClientModal
+        isOpen={isAddClientModalOpen}
+        onClose={() => setIsAddClientModalOpen(false)}
+        onSubmit={handleAddClient}
       />
     </>
   )

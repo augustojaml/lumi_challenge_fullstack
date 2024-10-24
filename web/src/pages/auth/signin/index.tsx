@@ -4,7 +4,7 @@ import { useSessions } from '@global/api/mutation/use-sessions'
 import { useAuthStore } from '@global/useStores/useAuth'
 import { Lock, Mail } from 'lucide-react'
 import { ChangeEvent, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
 const IFormSessionsData = {
@@ -26,10 +26,9 @@ export const SignInPage = () => {
     {},
   )
 
-
-
-
   const navigate = useNavigate()
+  const location = useLocation();
+
 
   const { sessions: sessionsToken, signIn } = useAuthStore((store) => store)
 
@@ -65,9 +64,10 @@ export const SignInPage = () => {
 
   useEffect(() => {
     if (sessionsToken) {
-      navigate('/')
+      const from = location.state?.from?.pathname || '/';
+      navigate(from, { replace: true });
     }
-  }, [navigate, sessionsToken])
+  }, [navigate, sessionsToken, location])
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -107,7 +107,7 @@ export const SignInPage = () => {
             error={errors.password}
           />
 
-          <Button label="Entrar" type="submit" isLoading={isPending} />
+          <Button label="Entrar" type="submit" fullWidth isLoading={isPending} />
         </form>
 
         <p className="mt-8 text-sm text-textSecondary">
