@@ -28,9 +28,17 @@ export interface ICreateInvoiceData {
   consumption_history: IConsumptionHistory[]
 }
 
+export interface IFindInvoiceByReferenceMonth {
+  reference_month: string
+  client_number: string
+}
+
 export interface IInvoiceRepository {
   create(data: ICreateInvoiceData): Promise<Invoice>
   findById(id: string): Promise<Invoice | null>
   findAll(): Promise<Invoice[]>
-  findInvoiceByReferenceMonth(reference_month: string): Promise<Invoice | null>
+  findInvoiceByReferenceMonth({
+    reference_month,
+    client_number,
+  }: IFindInvoiceByReferenceMonth): Promise<Invoice | null>
 }

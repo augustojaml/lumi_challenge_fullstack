@@ -2,6 +2,7 @@ import { Invoice } from '@prisma/client'
 import { v4 as uuidv4 } from 'uuid'
 import {
   ICreateInvoiceData,
+  IFindInvoiceByReferenceMonth,
   IInvoiceRepository,
 } from '../interfaces/i-invoice-repository'
 
@@ -36,12 +37,17 @@ export class InMemoryInvoicesRepository implements IInvoiceRepository {
     return this.invoices
   }
 
-  async findInvoiceByReferenceMonth(
-    reference_month: string,
-  ): Promise<Invoice | null> {
-    const invoice = this.invoices.find(
-      (invoice) => invoice.reference_month === reference_month,
-    )
-    throw invoice || null
+  async findInvoiceByReferenceMonth({
+    reference_month,
+    client_number,
+  }: IFindInvoiceByReferenceMonth): Promise<Invoice | null> {
+    const invoice = this.invoices.find((invoice) => {
+      return (
+        invoice.reference_month === reference_month &&
+        invoice.client_number === client_number
+      )
+    })
+
+    return invoice || null
   }
 }

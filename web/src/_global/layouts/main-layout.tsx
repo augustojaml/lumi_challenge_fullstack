@@ -1,16 +1,26 @@
-import { MainLink } from '@components/main-link'
-import { useAuthStore } from '@global/useStores/useAuth'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import { LayoutDashboard, LogOut, Users } from 'lucide-react'
-import { ReactNode } from 'react'
-import { Outlet } from 'react-router-dom'
+import { MainLink } from "@components/main-link";
+import { useGetMe } from "@global/api/query/use-get-me";
+import { useAuthStore } from "@global/useStores/useAuth";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import {
+  Clipboard,
+  LayoutDashboard,
+  LogOut,
+  Mail,
+  User,
+  Users,
+} from "lucide-react";
+import { ReactNode } from "react";
+import { Outlet } from "react-router-dom";
 
 interface MainLayoutProps {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
-  const { signOut } = useAuthStore((store) => store)
+  const { signOut } = useAuthStore((store) => store);
+
+  const { data } = useGetMe();
 
   return (
     <div className="flex h-screen">
@@ -50,11 +60,44 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
               </DropdownMenu.Trigger>
               <DropdownMenu.Portal>
                 <DropdownMenu.Content
-                  className="w-40 rounded-md bg-input p-2 shadow-lg"
+                  className="w-64 rounded-md bg-gray-50 p-4 shadow-lg"
                   sideOffset={5}
                   align="end"
                 >
-                  <DropdownMenu.Arrow className="fill-white" offset={10} />
+                  <DropdownMenu.Arrow className="fill-gray-50" offset={10} />
+                  {data && (
+                    <div className="mb-4 rounded-md bg-white p-3 shadow-sm">
+                      <div className="flex items-center space-x-2">
+                        <p className="text-sm font-bold text-textPrimary">
+                          Nome:
+                        </p>
+                      </div>
+                      <p className="mt-1 flex items-center gap-1 text-sm text-gray-500">
+                        <User className="h-5 w-5 text-main" />
+                        {data.full_name}
+                      </p>
+
+                      <div className="mt-2 flex items-center space-x-2">
+                        <p className="text-sm font-bold text-textPrimary">
+                          Email:
+                        </p>
+                      </div>
+                      <p className="mt-1 flex items-center gap-1 text-sm text-gray-500">
+                        <Mail className="h-5 w-5 text-main" />
+                        {data.email}
+                      </p>
+
+                      <div className="mt-2 flex items-center space-x-2">
+                        <p className="text-sm font-bold text-textPrimary">
+                          Cliente:
+                        </p>
+                      </div>
+                      <p className="mt-1 flex items-center gap-1 text-sm text-gray-500">
+                        <Clipboard className="h-5 w-5 text-main" />
+                        {data.client_number}
+                      </p>
+                    </div>
+                  )}
                   <DropdownMenu.Item
                     className="flex cursor-pointer items-center space-x-2 rounded-md p-2 text-textPrimary hover:bg-gray-100"
                     onSelect={signOut}
@@ -77,7 +120,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;

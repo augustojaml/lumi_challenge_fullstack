@@ -48,9 +48,10 @@ export class UploadPdfInvoicesUseCase {
 
       if (client) {
         const findInvoiceByReferenceMonth =
-          await this.invoicesRepository.findInvoiceByReferenceMonth(
-            invoice.reference_month,
-          )
+          await this.invoicesRepository.findInvoiceByReferenceMonth({
+            reference_month: invoice.reference_month,
+            client_number: invoice.client_number,
+          })
 
         if (findInvoiceByReferenceMonth) {
           managerInvoices.push({

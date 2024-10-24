@@ -2,6 +2,7 @@ import { prisma } from '@/shared/core/libs/prisma'
 import { Invoice } from '@prisma/client'
 import {
   ICreateInvoiceData,
+  IFindInvoiceByReferenceMonth,
   IInvoiceRepository,
 } from '../interfaces/i-invoice-repository'
 
@@ -53,20 +54,21 @@ export class PrismaInvoicesRepository implements IInvoiceRepository {
     return invoices
   }
 
-  async findInvoiceByReferenceMonth(
-    reference_month: string,
-  ): Promise<Invoice | null> {
-    if (!reference_month) {
-      return null
-    }
-
-    const invoice = await prisma.invoice.findFirst({
-      where: { reference_month },
+  async findInvoiceByReferenceMonth({
+    reference_month,
+    client_number,
+  }: IFindInvoiceByReferenceMonth): Promise<Invoice | null> {
+    const invoice = prisma.invoice.findFirst({
+      where: {
+        reference_month,
+        client_number,
+      },
       include: {
         billed_items: true,
         consumption_history: true,
       },
     })
-    return invoice || null
+
+    return invoice
   }
 }

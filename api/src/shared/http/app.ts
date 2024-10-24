@@ -19,7 +19,7 @@ fastifyApp.register(fastifyMultipart)
 fastifyApp.register(fastifyJwt, {
   secret: env.JWT_SECRET,
   sign: {
-    expiresIn: '24h', // 1 day
+    expiresIn: '30m', // 30 minutes
   },
 })
 
