@@ -7,7 +7,7 @@ import { GetInvoiceByIdUseCase } from './get-invoice-by-id-use-case'
 let repo: InMemoryInvoicesRepository
 let sut: GetInvoiceByIdUseCase
 
-describe('Create Client Use Case Unit', () => {
+describe('Get Invoice Use Case Unit', () => {
   beforeEach(() => {
     repo = new InMemoryInvoicesRepository()
     sut = new GetInvoiceByIdUseCase(repo)

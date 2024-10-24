@@ -48,7 +48,7 @@ describe('Create invoices Use Case Unit', () => {
     )
   })
 
-  it('should not be able show crate invoice with invalid client', async () => {
+  it('should not be able show create invoice with invalid client', async () => {
     expect(async () => {
       await sut.execute({
         invoice: {

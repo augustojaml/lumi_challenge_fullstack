@@ -13,7 +13,7 @@ describe('Find all invoices Use Case Unit', () => {
     sut = new FindAllInvoiceUseCase(repo)
   })
 
-  it('should be able get invoice by id', async () => {
+  it('should be able to find all invoices', async () => {
     await repo.create({
       ...fakeInvoices[0],
       client_id: '123456',

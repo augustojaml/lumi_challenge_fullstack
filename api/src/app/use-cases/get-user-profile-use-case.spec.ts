@@ -9,13 +9,13 @@ import { GetUserProfileUseCase } from './get-user-profile-use-case'
 let repo: InMemoryClientsRepository
 let sut: GetUserProfileUseCase
 
-describe('Create Client Use Case Unit', () => {
+describe('Get user profile Use Case Unit', () => {
   beforeEach(() => {
     repo = new InMemoryClientsRepository()
     sut = new GetUserProfileUseCase(repo)
   })
 
-  it('should be able show user profile', async () => {
+  it('should be able to get user profile', async () => {
     const fakeClientId = randomUUID()
 
     await repo.create({
@@ -41,7 +41,7 @@ describe('Create Client Use Case Unit', () => {
     )
   })
 
-  it('should not be able show user profile with invalid id', async () => {
+  it('should not be able to get user profile with invalid id', async () => {
     await expect(() =>
       sut.execute({
         id: 'invalid-id',

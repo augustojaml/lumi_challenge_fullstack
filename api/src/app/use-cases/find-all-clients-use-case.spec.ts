@@ -14,7 +14,7 @@ describe('Find All Clients Use Case Unit', () => {
     sut = new FindAllClientsUseCase(repo)
   })
 
-  it('should be able show user profile', async () => {
+  it('should be able to find all clients', async () => {
     await repo.create({
       ...fakeClients[0],
       id: randomUUID(),

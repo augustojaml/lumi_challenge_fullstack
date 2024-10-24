@@ -17,7 +17,7 @@ describe('Upload invoices controller e2e', () => {
     await fastifyApp.close()
   })
 
-  it('should be able to upload invoices', async () => {
+  it('should not be able to upload invoices without client', async () => {
     const findUser = fakeUsers.find(
       (user) => user.email === 'pedro.oliveira@example.com',
     )

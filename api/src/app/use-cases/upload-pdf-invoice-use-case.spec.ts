@@ -19,7 +19,7 @@ describe('Upload invoices Use Case Unit', () => {
     sut = new UploadPdfInvoicesUseCase(clientRepo, repo)
   })
 
-  it('should be able show crate invoice', async () => {
+  it('should be able show create invoice', async () => {
     await clientRepo.create({
       ...fakeClients[0],
       id: randomUUID(),
@@ -41,6 +41,7 @@ describe('Upload invoices Use Case Unit', () => {
     const { managerInvoices } = await sut.execute({
       invoices: uploadedInvoices,
     })
+
     expect(managerInvoices).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -60,8 +61,36 @@ describe('Upload invoices Use Case Unit', () => {
         ...fakeInvoices[0],
         due_date: new Date(fakeInvoices[0].due_date),
       },
+    ]
+
+    const { managerInvoices } = await sut.execute({
+      invoices: uploadedInvoices,
+    })
+
+    expect(managerInvoices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          upload_reject: 'CLIENT_NOT_FOUND',
+        }),
+      ]),
+    )
+  })
+
+  it('should not be able upload invoice an existent invoice', async () => {
+    await clientRepo.create({
+      ...fakeClients[0],
+      id: randomUUID(),
+      role: 'USER',
+      invoices: undefined,
+    })
+
+    const uploadedInvoices = [
       {
-        ...fakeInvoices[1],
+        ...fakeInvoices[0],
+        due_date: new Date(fakeInvoices[0].due_date),
+      },
+      {
+        ...fakeInvoices[0],
         due_date: new Date(fakeInvoices[0].due_date),
       },
     ]
@@ -73,11 +102,7 @@ describe('Upload invoices Use Case Unit', () => {
     expect(managerInvoices).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          file_name: 'invoice_001.pdf',
-          client_number: '10011001',
-          reference_month: '2024-09',
-          installation_number: 'INST-1001',
-          amount_due: 350.75,
+          upload_reject: 'INVOICE_ALREADY_EXISTS',
         }),
       ]),
     )
